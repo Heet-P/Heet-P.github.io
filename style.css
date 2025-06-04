@@ -555,3 +555,53 @@ body {
         width: 100%;
     }
 }
+
+/* Social Links in Hero Section */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    color: #00ff00;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 2px solid #00ff00;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.social-link i {
+    transition: all 0.3s ease;
+}
+
+.social-link:hover i {
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1rem;
+    }
+    
+    .social-link {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+    }
+}
