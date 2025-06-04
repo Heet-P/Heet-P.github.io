@@ -25,6 +25,7 @@ A modern, hacker-themed educational platform designed specifically for Computer 
 - Engineering Physics - 2 (PSUD102)
 - Object Oriented Programming (CEUC102)
 - Digital Electronics (CEUS101)
+- Elements of Engineering (MEUD101)
 
 ## 🛠️ Technologies Used
 
@@ -33,8 +34,6 @@ A modern, hacker-themed educational platform designed specifically for Computer 
 - JavaScript 
 - Font Awesome Icons
 - Google Fonts (Fira Code)
-
-
 
 ## 🤝 Contributing
 
