@@ -162,3 +162,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Global Search Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('global-search');
+    const searchBtn = document.querySelector('.search-btn');
+
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        if (!searchTerm) return;
+
+        // Get all resource items
+        const resourceItems = document.querySelectorAll('.resource-item');
+        let found = false;
+
+        resourceItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+                found = true;
+                item.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                item.style.backgroundColor = '';
+            }
+        });
+
+        if (!found) {
+            alert('No results found for: ' + searchTerm);
+        }
+    }
+
+    // Search on button click
+    searchBtn.addEventListener('click', performSearch);
+
+    // Search on Enter key
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+
+    // Clear highlight when input changes
+    searchInput.addEventListener('input', function() {
+        const resourceItems = document.querySelectorAll('.resource-item');
+        resourceItems.forEach(item => {
+            item.style.backgroundColor = '';
+        });
+    });
+});

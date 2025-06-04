@@ -44,12 +44,12 @@ body {
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid #00ff00;
 }
 
 .logo {
@@ -457,27 +457,46 @@ body {
 
 /* Search Bar Styles */
 .search-container {
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: 2rem;
+    margin: 0 20px;
+    flex: 1;
+    max-width: 500px;
 }
 
-.terminal-search {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--primary-color);
-    color: var(--text-color);
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    padding: 0.5rem;
-    width: 250px;
+.search-input {
+    width: 100%;
+    padding: 8px 15px;
+    border: 2px solid #00ff00;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    border-radius: 4px;
     outline: none;
+    transition: all 0.3s ease;
 }
 
-.terminal-search::placeholder {
-    color: rgba(0, 255, 65, 0.5);
+.search-input:focus {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.search-input::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+.search-btn {
+    background: transparent;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: rgba(0, 255, 0, 0.1);
 }
 
 .search-results {
