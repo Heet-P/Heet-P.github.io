@@ -242,3 +242,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Loading Screen
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingStatus = document.querySelector('.loading-status');
+    const loadingTexts = [
+        'Loading modules...',
+        'Initializing database...',
+        'Setting up interface...',
+        'Preparing resources...',
+        'Almost ready...'
+    ];
+    
+    let currentText = 0;
+    const textInterval = setInterval(() => {
+        loadingStatus.textContent = loadingTexts[currentText];
+        currentText = (currentText + 1) % loadingTexts.length;
+    }, 600);
+
+    // Remove loading screen after animation
+    setTimeout(() => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            clearInterval(textInterval);
+        }, 500);
+    }, 3000);
+});
