@@ -396,6 +396,28 @@ body {
     border-top: 1px solid var(--primary-color);
 }
 
+.email-contact {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.email-contact i {
+    color: var(--primary-color);
+}
+
+.email-contact a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.email-contact a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--glow-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
