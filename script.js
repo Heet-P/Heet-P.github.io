@@ -167,33 +167,64 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('global-search');
     const searchBtn = document.querySelector('.search-btn');
+    const searchResults = document.createElement('div');
+    searchResults.className = 'search-results';
+    document.querySelector('.search-container').appendChild(searchResults);
+
+    // Subject data structure
+    const subjects = {
+        'sem1': [
+            { title: 'Engineering Mathematics - 1', code: 'MSUD101', path: 'subjects/msud101.html' },
+            { title: 'Engineering Physics - 1', code: 'PSUD101', path: 'subjects/psud101.html' },
+            { title: 'English', code: 'HS101', path: 'subjects/hs101.html' },
+            { title: 'Programming in C', code: 'CEUC101', path: 'subjects/ceuc101.html' }
+        ],
+        'sem2': [
+            { title: 'Engineering Mathematics - 2', code: 'MSUD102', path: 'subjects/msud102.html' },
+            { title: 'Engineering Physics - 2', code: 'PSUD102', path: 'subjects/psud102.html' },
+            { title: 'Object Oriented Programming', code: 'CEUC102', path: 'subjects/ceuc102.html' },
+            { title: 'Digital Electronics', code: 'CEUS101', path: 'subjects/ceus101.html' },
+            { title: 'Elements of Engineering', code: 'EEUS101', path: 'subjects/eeus101.html' }
+        ]
+    };
 
     function performSearch() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        if (!searchTerm) return;
+        if (!searchTerm) {
+            searchResults.classList.remove('show');
+            return;
+        }
 
-        // Get all resource items
-        const resourceItems = document.querySelectorAll('.resource-item');
-        let found = false;
-
-        resourceItems.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            if (text.includes(searchTerm)) {
-                found = true;
-                item.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
-                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-                item.style.backgroundColor = '';
+        const results = [];
+        
+        // Search through all subjects
+        Object.values(subjects).flat().forEach(subject => {
+            if (subject.title.toLowerCase().includes(searchTerm) || 
+                subject.code.toLowerCase().includes(searchTerm)) {
+                results.push(subject);
             }
         });
 
-        if (!found) {
-            alert('No results found for: ' + searchTerm);
+        // Display results
+        if (results.length > 0) {
+            searchResults.innerHTML = results.map(result => `
+                <a href="${result.path}" class="search-result-item">
+                    ${result.title}
+                    <span class="subject-code">${result.code}</span>
+                </a>
+            `).join('');
+            searchResults.classList.add('show');
+        } else {
+            searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+            searchResults.classList.add('show');
         }
     }
 
     // Search on button click
     searchBtn.addEventListener('click', performSearch);
+
+    // Search on input change
+    searchInput.addEventListener('input', performSearch);
 
     // Search on Enter key
     searchInput.addEventListener('keypress', function(e) {
@@ -202,11 +233,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Clear highlight when input changes
-    searchInput.addEventListener('input', function() {
-        const resourceItems = document.querySelectorAll('.resource-item');
-        resourceItems.forEach(item => {
-            item.style.backgroundColor = '';
-        });
+    // Close search results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && 
+            !searchBtn.contains(e.target) && 
+            !searchResults.contains(e.target)) {
+            searchResults.classList.remove('show');
+        }
     });
 });

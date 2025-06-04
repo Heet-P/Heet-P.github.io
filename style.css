@@ -462,6 +462,7 @@ body {
     margin: 0 20px;
     flex: 1;
     max-width: 500px;
+    position: relative;
 }
 
 .search-input {
@@ -470,7 +471,7 @@ body {
     border: 2px solid #00ff00;
     background: rgba(0, 0, 0, 0.8);
     color: #00ff00;
-    font-family: 'Courier New', monospace;
+    font-family: 'Fira Code', monospace;
     border-radius: 4px;
     outline: none;
     transition: all 0.3s ease;
@@ -505,12 +506,13 @@ body {
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.95);
-    border: 1px solid var(--primary-color);
+    border: 1px solid #00ff00;
     border-top: none;
     max-height: 300px;
     overflow-y: auto;
     display: none;
     z-index: 1000;
+    margin-top: 5px;
 }
 
 .search-results.show {
@@ -519,14 +521,15 @@ body {
 
 .search-result-item {
     padding: 0.8rem 1rem;
-    color: var(--text-color);
+    color: #00ff00;
     text-decoration: none;
     display: block;
     transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
 }
 
 .search-result-item:hover {
-    background: rgba(0, 255, 65, 0.1);
+    background: rgba(0, 255, 0, 0.1);
     color: #fff;
 }
 
@@ -540,9 +543,15 @@ body {
     .search-container {
         margin: 1rem 0;
         width: 100%;
+        max-width: none;
     }
     
-    .terminal-search {
+    .nav-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .search-input {
         width: 100%;
     }
 }
