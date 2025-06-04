@@ -379,21 +379,31 @@ body {
     text-shadow: 0 0 10px var(--glow-color);
 }
 
-.social-links {
+.footer-section .social-links {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    align-items: center;
 }
 
-.social-links a {
-    font-size: 1.5rem;
+.footer-section .social-links a {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--primary-color);
+.footer-section .social-links a:hover {
+    color: #fff;
+    background: rgba(0, 255, 65, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px var(--glow-color);
 }
 
 .email-contact {
